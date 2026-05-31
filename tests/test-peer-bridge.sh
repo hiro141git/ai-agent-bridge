@@ -32,9 +32,6 @@ assert_contains() {
 
 echo "=== file_hash ==="
 
-# Source only the hash function without running the main loop
-hash_fn=$(grep -A2 'file_hash()' "$BRIDGE" | head -3)
-
 f="$TMPDIR_TEST/sample.md"
 echo "hello world" > "$f"
 

@@ -40,8 +40,7 @@ discover_peer() {
 }
 
 dispatch() {
-  local now date time message peer_id payload result
-  now=$(date +%s)
+  local date time message peer_id payload result
   date=$(date '+%Y-%m-%d')
   time=$(date '+%H:%M')
 
