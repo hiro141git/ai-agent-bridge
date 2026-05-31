@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y jq shellcheck
+
+      - name: Syntax check (bash -n)
+        run: |
+          for f in bridge/*.sh; do
+            echo "Checking $f"
+            bash -n "$f"
+          done
+
+      - name: ShellCheck
+        run: shellcheck bridge/*.sh tests/*.sh
+
+      - name: Run tests
+        run: bash tests/test-peer-bridge.sh
