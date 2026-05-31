@@ -9,7 +9,6 @@ BASH_MAJOR="${BASH_VERSINFO[0]:-3}"
 
 PASS=0
 FAIL=0
-BRIDGE="./bridge/peer-bridge.sh"
 TMPDIR_TEST=$(mktemp -d)
 trap 'rm -rf "$TMPDIR_TEST"' EXIT
 
